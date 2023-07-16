@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: iransans;
+        src: url("./assets/iransansweb.woff") format("opentype");
+    }
+
+    * {
+        font-family: "iransans";
+    }
+}

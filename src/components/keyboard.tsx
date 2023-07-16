@@ -1,6 +1,14 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-export default function Keyboard() {
+export default function Keyboard({
+    setKeyPressed,
+    wrongGuesses,
+    correctGuesses,
+}: {
+    setKeyPressed: Dispatch<SetStateAction<string>>;
+    wrongGuesses: string[];
+    correctGuesses: string[];
+}) {
     const [row1, setRow1] = useState<string[]>();
     const [row2, setRow2] = useState<string[]>();
     const [row3, setRow3] = useState<string[]>();
@@ -16,36 +24,57 @@ export default function Keyboard() {
 
     return (
         <div className="flex flex-col w-full">
-            <div className="w-full flex justify-center md:my-1 my-[2px]">
+            <div className="w-full flex justify-center lg:my-1 my-[2px]">
                 {row1?.map((letter) => (
                     <span
-                        className="text-[3vmin] rounded bg-gray-600 lg:p-[3vmin] lg:m-[4px] m-[2px] p-[2vmin] cursor-pointer"
+                        className={`text-[3vmin] rounded bg-gray-600 lg:p-[3vmin] lg:m-[4px] m-[2px] p-[2vmin] cursor-pointer ${
+                            wrongGuesses.includes(letter) && "bg-red-500"
+                        } ${correctGuesses.includes(letter) && "bg-green-500"}`}
                         onClick={(event) => {
-                            console.log(event.currentTarget.innerText);
+                            if (
+                                !wrongGuesses.includes(
+                                    event.currentTarget.innerText
+                                )
+                            )
+                                setKeyPressed(event.currentTarget.innerText);
                         }}
                     >
                         {letter}
                     </span>
                 ))}
             </div>
-            <div className="w-full flex justify-center md:my-1 my-[2px]">
+            <div className="w-full flex justify-center lg:my-1 my-[2px]">
                 {row2?.map((letter) => (
                     <span
-                        className="text-[3vmin] rounded bg-gray-600 lg:p-[3vmin] lg:m-[4px] m-[2px] p-[2vmin] cursor-pointer"
+                        className={`text-[3vmin] rounded bg-gray-600 lg:p-[3vmin] lg:m-[4px] m-[2px] p-[2vmin] cursor-pointer ${
+                            wrongGuesses.includes(letter) && "bg-red-500"
+                        } ${correctGuesses.includes(letter) && "bg-green-500"}`}
                         onClick={(event) => {
-                            console.log(event.currentTarget.innerText);
+                            if (
+                                !wrongGuesses.includes(
+                                    event.currentTarget.innerText
+                                )
+                            )
+                                setKeyPressed(event.currentTarget.innerText);
                         }}
                     >
                         {letter}
                     </span>
                 ))}
             </div>
-            <div className="w-full flex justify-center md:my-1 my-[2px]">
+            <div className="w-full flex justify-center lg:my-1 my-[2px]">
                 {row3?.map((letter) => (
                     <span
-                        className="text-[3vmin] rounded bg-gray-600 lg:p-[3vmin] lg:m-[4px] m-[2px] p-[2vmin] cursor-pointer"
+                        className={`text-[3vmin] rounded bg-gray-600 lg:p-[3vmin] lg:m-[4px] m-[2px] p-[2vmin] cursor-pointer ${
+                            wrongGuesses.includes(letter) && "bg-red-500"
+                        } ${correctGuesses.includes(letter) && "bg-green-500"}`}
                         onClick={(event) => {
-                            console.log(event.currentTarget.innerText);
+                            if (
+                                !wrongGuesses.includes(
+                                    event.currentTarget.innerText
+                                )
+                            )
+                                setKeyPressed(event.currentTarget.innerText);
                         }}
                     >
                         {letter}
